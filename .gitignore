@@ -1,0 +1,8 @@
+/target/
+/node_modules/
+/.pnpm-store/
+/dist/
+/pkg/
+*.zip
+.DS_Store
+promotetest

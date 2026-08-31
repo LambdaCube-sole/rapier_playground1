@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rapier Playground</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        touch-action: none;
+        user-select: none;
+        -webkit-user-select: none;
+      }
+      canvas {
+        display: block;
+        background-color: black;
+        width: 100%;
+        height: 100%;
+        touch-action: none;
+        user-select: none;
+        -webkit-user-select: none;
+      }
+    </style>
+  </head>
+
+  <body id="wasm-example">
+    <canvas id="canvas"></canvas>
+    <script type="module">
+      const canvas = document.getElementById("canvas");
+      const syncCanvasSize = () => {
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        const w = Math.max(1, Math.floor(canvas.clientWidth * dpr));
+        const h = Math.max(1, Math.floor(canvas.clientHeight * dpr));
+        if (canvas.width !== w) canvas.width = w;
+        if (canvas.height !== h) canvas.height = h;
+      };
+      syncCanvasSize();
+      window.addEventListener("resize", syncCanvasSize);
+
+      import init from "./pkg/rapier_playground1.js";
+      init().then(() => {
+        syncCanvasSize();
+        console.log("WASM Loaded");
+      });
+    </script>
+  </body>
+</html>

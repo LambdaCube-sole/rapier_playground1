@@ -1,0 +1,24 @@
+{
+  "name": "rapier_playground1",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "wasm": "wasm-pack build --target web --out-dir pkg",
+    "dev": "vite",
+    "start": "pnpm wasm && vite",
+    "build": "pnpm wasm && vite build",
+    "package": "bash package-itch.sh",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^7.3.6"
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "^11.17.0",
+      "onFail": "download"
+    }
+  }
+}
